@@ -1,0 +1,48 @@
+---
+title: "This is it...let's start"
+author: "The *osbserveR* taskforce"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+bibliography: bib/BibRef.bib
+csl: nucleic-acids-research.csl
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# TODO
+
+- [x] Create git
+- [x] add dataset
+- [x] add bib file and check inline citation 
+- [x] add doc for model codes 
+- [ ] other things?
+
+
+# Section 1
+
+Un essai avec de la biblio [@Austin2011] et citations multiples [@Ho2011; @Stuart2010]
+
+# Section 2
+
+Une équation numérotée:
+\begin{equation}
+\displaystyle P(A|B)={\frac {P(B|A)\cdot P(A)}{P(B)}}
+\end{equation}
+
+## SubSection
+
+Plus d'infos:
+
+- [Rmarkdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+- [Rmarkdown - The definitive guide](https://bookdown.org/yihui/rmarkdown/)
+\vspace{1cm}
+
+# References
