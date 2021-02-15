@@ -23,6 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - [x] add bib file and check inline citation 
 - [x] add doc for model codes 
 - [ ] other things?
+- [ ] encore d'autres
 
 
 # Section 1
