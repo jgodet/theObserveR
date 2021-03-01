@@ -17,12 +17,26 @@ knitr::opts_chunk$set(echo = TRUE)
 # STEP 1 : PS estimation
 
 ## Covariate selection
+General guidelines for covariate selection[@Lee2017]
+- Do not include variables thought to be related to the treatment but not to the outcome
+- Do not include variables that may be influenced by the treatment (time variant variables measured after treatment)
+- Exclude variables that perfectly predict treatment status (overlap minimum)
 
 ## Parametric vs non parametric estimation
+- Parmetric : via generalized linear modeling (i.e., logistic regression, probit regression, or discriminant analysis) +/-including product (polynomial or interaction) terms of the covariates. ==> Overfitting !! Another concern is that researchers often make uninformed decisions on the product terms to be included.
+
+- Non parametric : via generalized boosted modeling (GBM). Combinaison of regression tree providing a smoothed function for the final PS estimation.This approach allows for multiway product terms modeled “naturally” as a result of sample splitting.
+
+See Harder et al. (2010) for the comparison of parametric vs. non-parametric PS estimation when they are applied with
+different PS techniques.
 
 
+# STEP 2 : Checking balance on the propensity scores and covariates
+
+## Balance on the propensity scores
 
 
+# References
 
 
 
