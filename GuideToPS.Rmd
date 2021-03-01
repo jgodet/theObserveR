@@ -34,6 +34,7 @@ different PS techniques.
 # STEP 2 : Checking balance on the propensity scores and covariates
 
 ## Balance on the propensity scores
+- exploration of higher moments (experimental exploration with dataset)
 
 
 # References
