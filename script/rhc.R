@@ -40,4 +40,4 @@ rownames(dataSMD) <- rownames(wRhcSMD)
 
 stdDiffDotPlot(dataSMD=dataSMD,col=c("black", "blue"), xlim = c(0,.8),cex=.5 )
 
-
+#https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6351359/
