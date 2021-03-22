@@ -1,10 +1,56 @@
-@article {HoImaKin07,
-	title = {Matching as Nonparametric Preprocessing for Reducing Model Dependence in Parametric Causal Inference},
-	journal = {Political Analysis},
-	volume = {15},
-	year = {2007},
-	pages = {199{\textendash}236},
-	abstract = {Although published works rarely include causal estimates from more than a few model specifications, authors usually choose the presented estimates from numerous trial runs readers never see. Given the often large variation in estimates across choices of control variables, functional forms, and other modeling assumptions, how can researchers ensure that the few estimates presented are accurate or representative? How do readers know that publications are not merely demonstrations that it is possible to find a specification that fits the author{\textquoteright}s favorite hypothesis? And how do we evaluate or even define statistical properties like unbiasedness or mean squared error when no unique model or estimator even exists? Matching methods, which offer the promise of causal inference with fewer assumptions, constitute one possible way forward, but crucial results in this fast-growing methodological literature are often grossly misinterpreted. We explain how to avoid these misinterpretations and propose a unified approach that makes it possible for researchers to preprocess data with matching (such as with the easy-to-use software we offer) and then to apply the best parametric techniques they would have used anyway. This procedure makes parametric models produce more accurate and considerably less model-dependent causal inferences.
-},
-	author = {Daniel Ho and Kosuke Imai and Gary King and Elizabeth Stuart}
+% Encoding: UTF-8
+
+@Article{Austin2011,
+  author    = {Peter C. Austin},
+  journal   = {Multivariate Behavioral Research},
+  title     = {An Introduction to Propensity Score Methods for Reducing the Effects of Confounding in Observational Studies},
+  year      = {2011},
+  month     = {may},
+  number    = {3},
+  pages     = {399--424},
+  volume    = {46},
+  doi       = {10.1080/00273171.2011.568786},
+  publisher = {Informa {UK} Limited},
 }
+
+@Article{Stuart2010,
+  author    = {Elizabeth A. Stuart},
+  journal   = {Statistical Science},
+  title     = {Matching Methods for Causal Inference: A Review and a Look Forward},
+  year      = {2010},
+  month     = {feb},
+  number    = {1},
+  pages     = {1--21},
+  volume    = {25},
+  doi       = {10.1214/09-sts313},
+  publisher = {Institute of Mathematical Statistics},
+}
+
+@Article{Ho2011,
+  author    = {Daniel E. Ho and Kosuke Imai and Gary King and Elizabeth A. Stuart},
+  journal   = {Journal of Statistical Software},
+  title     = {{MatchIt}: Nonparametric Preprocessing for Parametric Causal Inference},
+  year      = {2011},
+  number    = {8},
+  volume    = {42},
+  doi       = {10.18637/jss.v042.i08},
+  publisher = {Foundation for Open Access Statistic},
+}
+
+@article{Matschinger_comparison_2020,
+	author = {Matschinger, Herbert and Heider, Dirk and König, Hans-Helmut},
+	journaltitle = {Das Gesundheitswesen},
+	title = {A Comparison of Matching and Weighting Methods for Causal Inference Based on Routine Health Insurance Data, or: What to do If an {RCT} is Impossible},
+	date = {2020-03},
+	volume = {82},
+	pages = {S139--S150},
+	issue = {S 02},
+	issn = {0941-3790, 1439-4421},
+	url = {http://www.thieme-connect.de/DOI/DOI?10.1055/a-1009-6634},
+	doi = {10.1055/a-1009-6634},
+	publisher = {Thieme},
+	abstract = {Due to a multitude of reasons Randomized Control Trials on the basis of so-called routine data provided by insurance companies cannot be conducted. Therefore the estimation of causal effects for any kind of treatment is hampered since systematic bias due to specific selection processes must be suspected. The basic problem of counterfactual, which is to evaluate the difference between two potential outcomes for the same unit, is discussed. The focus lies on the comparison of the performance of different approaches to control for systematic differences between treatment and control group. These strategies are all based on propensity scores, namely matching or pruning, {IPTW} (inverse probability treatment weighting) and entropy balancing. Methods to evaluate these strategies are presented. A logit model is employed with 87 predictors to estimate the propensity score or to estimate the entropy balancing weights. All analyses are restricted to estimate the {ATT} (Average Treatment Effect for the Treated) Exemplary data come from a prospective controlled interventionstudy with two measurement occasions. Data contain 35857 chronically ill insurants with diabetes, congestive heart failure, arteriosclerosis, coronary heart disease or hypertension of one German sickness fund. The intervention group was offered an individual telephone coaching to improve health behavior and slow down disease progression while the control group received treatment as usual. Randomization took place before the insurantsâ consent to participate was obtained so assumptions of an {RCT} are violated. A weighted mixture model (difference-in-difference) as the causal model of interest is employed to estimate treatment effects in terms of costs distinguishing the categories outpatient costs, medication costs, and total costs. It is shown that entropy balancing performs best with respect to balancing treatment and control group at baseline for the first three moments of all 87 predictors. This will result in least biased estimates of the treatment effect.},
+	langid = {english},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
