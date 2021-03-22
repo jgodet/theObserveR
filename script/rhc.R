@@ -18,7 +18,7 @@ indSamp <- sort(c(rhcY$X, rhcN$X))
 
 
 wRhc <- rhc %>% filter(X %in% indSamp) #working data base (observational group)
-tabObs <- tableone::CreateTableOne(vars = names( wRhc )[c(-1,-45,-67:-64)], data =  wRhc ,strata = "swang1")
+tabObs <- tableone::CreateTableOne(vars = names( wRhc )[c(-1,-45,-67:-64)], data =  wRhc ,strata = "swang1",smd=TRUE)
 wRhcSMD <- ExtractSmd(tabObs)
 
 
