@@ -52,7 +52,7 @@ library(survey)
 library(reshape2)
 library(ggplot2)
 
-attach(rhc)
+#attach(rhc)
 rhc$swang01<-ifelse(swang1=="RHC",1,0)
 
 vars<-c("cat1", "ca", "sadmdte", "dschdte", 
@@ -71,8 +71,8 @@ tabUnmatched <- CreateTableOne(vars = vars, strata = "swang1", data = rhc, test 
 print(tabUnmatched, nonnormal=c("age","aps"), smd = TRUE)
 
 ##### Propensity score (ps) estimation
-rhc$ID<-c(1:length(cat1))
-rhct<-data.frame(ID,cat1, ca, sadmdte, dschdte, 
+rhc$ID<-c(1:length(rhc$cat1))
+rhct<-with(rhc,data.frame(ID,cat1, ca, sadmdte, dschdte, 
                  lstctdte, death, cardiohx, chfhx, dementhx, psychhx, 
                  chrpulhx, renalhx, liverhx, gibledhx, malighx, immunhx, 
                  transhx, amihx, age, sex, edu, surv2md1, das2d3pc, 
@@ -81,7 +81,7 @@ rhct<-data.frame(ID,cat1, ca, sadmdte, dschdte,
                  sod1, pot1, paco21, ph1, swang1, swang01, dnr1, 
                  ninsclas, resp, card, neuro, gastr, renal, meta, 
                  hema, seps, trauma, ortho, race, 
-                 income)
+                 income))
 rhct2<-rhct[complete.cases(rhct),]						
 
 psModel <- glm(formula = swang01~cat1+ ca+ sadmdte+ dschdte+ 
@@ -194,7 +194,8 @@ print(tabWeightedm, smd = TRUE)
 ###################### Propensity score overlap weight ##############################
 #####################################################################################
 ## Overlap weight
-ow <- (pAssign * (1 - pAssign)) / pAssign
+#TODO
+ow <- (pAssign * (1 - pAssign)) / pAssign   #TODO à vérifier
 ## Weighted data
 rhcSvyOw <- svydesign(ids = ~ 1, data = rhct3, weights = ~ ow)
 
@@ -239,6 +240,7 @@ ggplot(data = dataPlotMelt,
   coord_flip() +
   theme_bw() + theme(legend.key = element_blank())
 
+#entropy balancing
 
 
 
