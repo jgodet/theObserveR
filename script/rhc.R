@@ -51,9 +51,9 @@ library(Matching)
 library(survey)
 library(reshape2)
 library(ggplot2)
-
+library(tidyverse)
 #attach(rhc)
-rhc$swang01<-ifelse(swang1=="RHC",1,0)
+rhc$swang01<-ifelse(rhc$swang1=="RHC",1,0)
 
 vars<-c("cat1", "ca", "sadmdte", "dschdte", 
         "lstctdte", "death", "cardiohx", "chfhx", "dementhx", "psychhx", 
@@ -82,6 +82,18 @@ rhct<-with(rhc,data.frame(ID,cat1, ca, sadmdte, dschdte,
                  ninsclas, resp, card, neuro, gastr, renal, meta, 
                  hema, seps, trauma, ortho, race, 
                  income))
+# Avec dplyr
+rhct <- rhc %>%
+  dplyr::select(ID,cat1, ca, sadmdte, dschdte, 
+                lstctdte, death, cardiohx, chfhx, dementhx, psychhx, 
+                chrpulhx, renalhx, liverhx, gibledhx, malighx, immunhx, 
+                transhx, amihx, age, sex, edu, surv2md1, das2d3pc, 
+                t3d30, dth30, aps1, scoma1, meanbp1, wblc1, hrt1, 
+                resp1, temp1, pafi1, alb1, hema1, bili1, crea1, 
+                sod1, pot1, paco21, ph1, swang1, swang01, dnr1, 
+                ninsclas, resp, card, neuro, gastr, renal, meta, 
+                hema, seps, trauma, ortho, race, 
+                income)
 rhct2<-rhct[complete.cases(rhct),]						
 
 psModel <- glm(formula = swang01~cat1+ ca+ sadmdte+ dschdte+ 
@@ -163,7 +175,27 @@ print(tabWeighted, smd = TRUE)
 ###################################### IPTWst #######################################
 #####################################################################################
 ##  stabilized weight
-stweight <- ifelse(rhct2$swang1=="RHC",PrRHC/pRHC,PrNoRHC/(1-pRHC)) # à vérifier
+stweight <- ifelse(rhct2$swang1=="RHC",PrRHC/pRHC,PrNoRHC/(1-pRHC)) # vérifié :)
+# vérificaton // calcul par ipw
+stweight2 <- ipw::ipwpoint(swang01,
+                           family = "binomial",
+                           link = "logit",
+                           data = rhct2,
+                           numerator = ~1,
+                           denominator = ~cat1+ ca+ sadmdte+ dschdte+ 
+                             lstctdte+ death+ cardiohx+ chfhx+ dementhx+ psychhx+ 
+                             chrpulhx+ renalhx+ liverhx+ gibledhx+ malighx+ immunhx+ 
+                             transhx+ amihx+ age+ sex+ edu+ surv2md1+ das2d3pc+ 
+                             t3d30+ dth30+ aps1+ scoma1+ meanbp1+ wblc1+ hrt1+ 
+                             resp1+ temp1+ pafi1+ alb1+ hema1+ bili1+ crea1+ 
+                             sod1+ pot1+ paco21+ ph1+ dnr1+ 
+                             ninsclas+ resp+ card+ neuro+ gastr+ renal+ meta+ 
+                             hema+ seps+ trauma+ ortho+ race+ 
+                             income)
+table(round(stweight,10) %in% round(stweight2$ipw.weights,10))
+#' Les poids ajustés sonts les mêmes avec les deux méthodes au 10e décimale près
+#' (divergences à partir du 11e décimale)
+
 ## Weighted data
 rhct3<-rhc[rhct2$ID,]
 rhcSvy <- svydesign(ids = ~ 1, data = rhct3, weights = ~ stweight)
