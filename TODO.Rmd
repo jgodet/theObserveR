@@ -10,8 +10,8 @@ editor_options:
 
 TODO 20210504
 
-- [ ] check stabilized weight formula in ./script/rhc.R 
-- [ ] compare calculation btw ipwpoint and handmade 
+- [X] check stabilized weight formula in ./script/rhc.R  - done TY
+- [X] compare calculation btw ipwpoint and handmade - done TY
 - [ ] What about NA's in weights
-- [ ] discuss package matchit (assymetry btw variable importance (juste case/control?)) 
+- [ ] discuss package matchit (assymetry btw group importance (only for case/control?)) 
 - [ ] how to treat missing values in PS calculation
