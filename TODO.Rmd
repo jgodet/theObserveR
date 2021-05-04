@@ -1,0 +1,17 @@
+---
+title: "TODO"
+author: "J.Godet"
+date: "04/05/2021"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+TODO 20210504
+
+- [ ] check stabilized weight formula in ./script/rhc.R 
+- [ ] compare calculation btw ipwpoint and handmade 
+- [ ] What about NA's in weights
+- [ ] discuss package matchit (assymetry btw variable importance (juste case/control?)) 
+- [ ] how to treat missing values in PS calculation
