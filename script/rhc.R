@@ -43,6 +43,27 @@ stdDiffDotPlot(dataSMD=dataSMD,col=c("black", "blue"), xlim = c(0,.8),cex=.5 )
 #https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6351359/
 
 
+
+## Précisions des estimations en ajustant sur les covariables dans un RCT
+rctRhc$Death<-rctRhc$death
+rctRhc$Death[rctRhc$Death=="Yes"]<-1
+rctRhc$Death[rctRhc$Death=="No"]<-0
+rctRhc$Death<-as.numeric(rctRhc$Death)
+
+summary(glm(Death~arm,family="binomial",data=rctRhc))
+summary(glm(Death~arm+ca,family="binomial",data=rctRhc))
+summary(glm(Death~arm+ca+lstctdte,family="binomial",data=rctRhc))
+summary(glm(Death~arm+ca+lstctdte+dschdte,family="binomial",data=rctRhc))
+summary(glm(Death~arm+ca+lstctdte+dschdte+sadmdte,family="binomial",data=rctRhc))
+
+summary(glm(Death~arm,data=rctRhc))
+summary(glm(Death~arm+ca,data=rctRhc))
+summary(glm(Death~arm+ca+lstctdte,data=rctRhc))
+summary(glm(Death~arm+ca+lstctdte+dschdte,data=rctRhc))
+summary(glm(Death~arm+ca+lstctdte+dschdte+sadmdte,data=rctRhc))
+
+
+
 ############################################################################################################################################
 ################################################ Comparaison SMD obs: matching/weighting ###################################################
 ############################################################################################################################################
